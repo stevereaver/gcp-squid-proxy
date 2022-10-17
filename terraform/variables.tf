@@ -15,10 +15,10 @@ variable "network" {
   type        = string
   default     = "default"
 }
-variable "subnetwork" {
-  description = "The subnetwork to deploy to, if not specified 'default' will be used"
+variable "instance_name" {
+  description = "The name of the instance, 'iap-squid-proxy' will be used if not set"
   type        = string
-  default     = "default"
+  default     = "squid-proxy"
 }
 
 variable "network_tag" {

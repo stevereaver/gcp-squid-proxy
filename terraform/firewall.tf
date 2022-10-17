@@ -18,7 +18,7 @@ resource "google_compute_firewall" "ingress-ip-iap" {
 
   allow {
     protocol = "tcp"
-    ports    = ["3128"]
+    ports    = ["3128","22"]
   }
   source_ranges = ["35.235.240.0/20"]
 }

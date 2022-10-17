@@ -3,7 +3,7 @@
 #-------------------------------------------------------
 resource "google_service_account" "iap_squid_proxy_sa" {
   project      = var.project_id
-  account_id   = "iap-squid-proxy-sa"
+  account_id   = var.squid_sa_name
   display_name = "Squid Proxy Service Account"
 }
 
@@ -19,13 +19,10 @@ module "projects_iam_bindings" {
 
   bindings = {
     "roles/monitoring.admin" = [
-      "serviceAccount:${google_service_account.iap_squid_proxy_sa.email}"
+      "serviceAccount:${var.squid_sa_name}@${var.project_id}.iam.gserviceaccount.com"
     ]
     "roles/logging.logWriter" = [
-      "serviceAccount:${google_service_account.iap_squid_proxy_sa.email}"
-    ]
-    "roles/owner" = [
-      "serviceAccount:${google_service_account.gitlab_runner_sa.email}"
+      "serviceAccount:${var.squid_sa_name}@${var.project_id}.iam.gserviceaccount.com"
     ]
   }
 }

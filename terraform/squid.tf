@@ -82,10 +82,6 @@ resource "google_compute_instance" "iap_squid_proxy" {
 
   metadata_startup_script = local.startup_script
 
-  #metadata = {
-  #  startup-script = local.startup_script
-  #}
-
   network_interface {
     network = var.network
   }
